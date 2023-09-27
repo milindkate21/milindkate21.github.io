@@ -12,6 +12,7 @@ const elemToggleFunc = function (elem) { elem.classList.toggle("active"); }
 
 const header = document.querySelector("[data-header]");
 const goTopBtn = document.querySelector("[data-go-top]");
+const cv = document.getElementById('btndownload')
 
 window.addEventListener("scroll", function () {
 
@@ -94,3 +95,20 @@ if (localStorage.getItem("theme") === "light_theme") {
   document.body.classList.remove("light_theme");
   document.body.classList.add("dark_theme");
 }
+
+
+cv.addEventListener("click", function () {
+
+  const fileUrl = "Resume.pdf";
+  const anchor = document.createElement("a");
+  anchor.style.display = "none";
+  anchor.href = fileUrl;
+  anchor.download = "Resume_MilindKate.pdf";
+  document.body.appendChild(anchor);
+  anchor.click();
+
+  // Clean up by removing the anchor element
+  document.body.removeChild(anchor);
+
+});
+
